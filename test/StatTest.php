@@ -11,21 +11,15 @@ require_once "../src/StatEndurance.php";
 class StatTest extends PHPUnit_Framework_TestCase
 {
   public function testStatsShouldHaveNames() {
-    $st = new StatStrength();
-    $ag = new StatAgility();
-    $in = new StatIntelligence();
-    $en = new StatEndurance();
+    $st = new StatStrength(2);
+    $ag = new StatAgility(3);
+    $in = new StatIntelligence(4);
+    $en = new StatEndurance(5);
 
     $this->assertEquals($st->name(), 'Strength');
     $this->assertEquals($ag->name(), 'Agility');
     $this->assertEquals($in->name(), 'Intelligence');
     $this->assertEquals($en->name(), 'Endurance');
-  }
-
-  public function testShouldHaveDefaultValues() {
-    $stat = new StatStrength();
-
-    $this->assertEquals($stat->value(), 2);
   }
 
   public function testConstructorShouldSetValue() {

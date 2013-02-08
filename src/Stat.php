@@ -1,12 +1,11 @@
 <?php
 
 abstract class Stat {
-  private $bonus;
   private $value;
 
 
 
-  public function __construct($value = 2) {
+  public function __construct($value) {
     if (!is_int($value)) {
       throw new InvalidArgumentException('Stat value must be a number.');
     }
@@ -16,22 +15,13 @@ abstract class Stat {
     }
 
     $this->value = $value;
-    $this->bonus = $this->getBonus();
-  }
-
-  public function bonus() {
-    return $this->bonus;
   }
 
   public function value() {
     return $this->value;
   }
 
-  public abstract function name();
-
-
-
-  private function getBonus() {
+  public function bonus() {
     $bonus = 0;
 
     switch ($this->value) {
@@ -58,4 +48,6 @@ abstract class Stat {
 
     return $bonus;
   }
+
+  public abstract function name();
 }
