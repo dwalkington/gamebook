@@ -4,6 +4,8 @@ abstract class Stat {
   private $bonus;
   private $value;
 
+
+
   public function __construct($value = 2) {
     if (!is_int($value)) {
       throw new InvalidArgumentException('Stat value must be a number.');
@@ -14,25 +16,7 @@ abstract class Stat {
     }
 
     $this->value = $value;
-
-    switch (true) {
-      case $this->value >= 2 && $this->value <= 4: {
-        $this->bonus = -1;
-        break;
-      }
-      case $this->value >= 5 && $this->value <= 8: {
-        $this->bonus = 0;
-        break;
-      }
-      case $this->value >= 9 && $this->value <= 10: {
-        $this->bonus = 1;
-        break;
-      }
-      case $this->value >= 11 && $this->value <= 12: {
-        $this->bonus = 2;
-        break;
-      }
-    }
+    $this->bonus = $this->getBonus();
   }
 
   public function bonus() {
@@ -44,4 +28,34 @@ abstract class Stat {
   }
 
   public abstract function name();
+
+
+
+  private function getBonus() {
+    $bonus = 0;
+
+    switch ($this->value) {
+      case 2:
+      case 3:
+      case 4:
+        $bonus = -1;
+        break;
+      case 5:
+      case 6:
+      case 7:
+      case 8:
+        $bonus = 0;
+        break;
+      case 9:
+      case 10:
+        $bonus = 1;
+        break;
+      case 11:
+      case 12:
+        $bonus = 2;
+        break;
+    }
+
+    return $bonus;
+  }
 }
