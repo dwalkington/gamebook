@@ -1,7 +1,7 @@
 <?php
 
 class Character {
-  
+
   private $name;
 
   public function setName($name) {
@@ -10,9 +10,5 @@ class Character {
 
   public function getName() {
     return $this->name;
-  }
-
-  public function getStrength(){
-    return 0;
   }
 }
